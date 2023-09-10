@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}Upload Essay{% endblock %} {% block content %}
+<h3 align="center">Upload Data EKG</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {{form.csrf_token }}
+        <div class="mt-5">
+            <h5 align="left">Upload Data EKG</h5>
+            {{form.file1}}
+        </div>
+
+        <div class="pt-3">
+            {{ form.radio1.label }}
+            <div>
+                {% for choice in form.radio1 %}
+                    <label>
+                        <div>
+                            {{ choice() }}
+                            {{ choice.label }}
+                        </div>
+                    </label>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="mt-4">
+            {{form.submit()}}
+        </div>
+        
+
+    </form>
+
+{% endblock %}

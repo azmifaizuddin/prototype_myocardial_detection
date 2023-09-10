@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %}Hasil Deteksi MI{% endblock %} {% block content %}
+    <h3>Hasil Deteksi MI (Model : {{model_name}})</h3>
+
+    <h5>Matrix Konfusi</h5>
+    <div>
+        <img src="{{url_for('static', filename='files/matrix1.png')}}">
+    </div>
+    
+
+    <div class="container mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Label</th>
+              <th scope="col">Akurasi</th>
+              <th scope="col">Sensitivitas</th>
+              <th scope="col">Spesivisitas</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in range(result|length - 1) %}
+                <tr>
+                    {% for j in range(result|length) %}
+                        <td>{{result[j][i]}} %</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td>Rata-Rata :</td>
+                    <td>{{mean_result[1]}}</td>
+                    <td>{{mean_result[2]}}</td>
+                    <td>{{mean_result[3]}}</td>
+                </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+{% endblock %}
